@@ -44,7 +44,7 @@
 
 
         <footer class="footer footer-alt">
-            2021 - <script>document.write(new Date().getFullYear())</script> &copy; UBold theme by <a href="#" class="text-white-50">Coderthemes</a>
+            2021 - <script>document.write(new Date().getFullYear())</script> &copy; Powered by <a href="#" class="text-white-50">Arif</a>
         </footer>
 
         <!-- Vendor js -->

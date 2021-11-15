@@ -58,7 +58,6 @@ class QuestionAnswerController extends Controller
                                                 'teacher_id' => 4,
                                                 'description' => $request->description,
                                                 'course_id' => $request->course_id]);
-
         $ans = File::create(['type' => $request->file->getClientOriginalExtension(),
                             'file_url' => $file_path,
                             'is_ans' => $ans_path,

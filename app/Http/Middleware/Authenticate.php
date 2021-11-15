@@ -21,7 +21,7 @@ class Authenticate extends Middleware
 
         $user = $request->user();
 
-        if (! $user || $user->user_type != 'teacher' || $user->user_type != 'student') {
+        if (!$user || $user->user_type != 'teacher' || $user->user_type != 'student') {
             return route('login');
         }
 

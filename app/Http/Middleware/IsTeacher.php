@@ -19,12 +19,13 @@ class IsTeacher
     {
 
         $role = Auth::user()->user_type;
-
-        if ($role != "teacher"){
-            return redirect('/student');
+        if ($role == "teacher"){
+            return $next($request);
+        }else{
+            return back();
         }
 
-        return $next($request);
+
     }
 
 }

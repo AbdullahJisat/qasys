@@ -25,6 +25,8 @@
                         <th data-field="amount" data-align="center" data-sortable="true" data-sorter="priceSorter">Type</th>
                         <th>Teacher</th>
                         <th>Course</th>
+                        <th>Ques</th>
+                        <th>Ans</th>
                         <th data-field="status" data-align="center" data-sortable="true" data-formatter="statusFormatter">Action
                         </th>
                     </tr>
@@ -39,6 +41,8 @@
                             <td>{{$questionAnswer->type}}</td>
                             <td>{{$questionAnswer->teacher->name}}</td>
                             <td>{{$questionAnswer->course->name}}</td>
+                            <td><a href="{{$questionAnswer->files[0]->is_ans ?? ""}}"><iframe src="{{$questionAnswer->files[0]->file_url ?? ""}}" frameborder="0" width="150px" height="150px"></iframe></a></td>
+                            <td><iframe src="{{$questionAnswer->files[0]->is_ans ?? ""}}" frameborder="0" width="150px" height="150px"></iframe></td>
                             <td>
                                 <a href="{{route('ques-ans.edit',$questionAnswer->id)}}" class="btn btn-sm btn-primary">Edit</a>
                                 <a href="{{route('ques-ans.delete',$questionAnswer->id)}}" class="btn btn-sm btn-danger">Delete</a>

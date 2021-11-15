@@ -9,7 +9,7 @@
             <p class="sub-header">
                 Example of custom toolbar.
             </p>
-            @if (Auth::user()->user_type == 'teacher')
+            @if (Auth::user()->user_type == 'admin')
             <a type="button" href="{{route('course.create')}}" class="btn btn-success">Add Course</a>
             @endif
             <table id="demo-custom-toolbar" data-toggle="table" data-toolbar="#demo-delete-row" data-search="true"

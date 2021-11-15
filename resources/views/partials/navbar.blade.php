@@ -3,7 +3,7 @@
 
     <div class="h-100" data-simplebar>
 
-        <!-- User box -->
+        {{-- <!-- User box -->
         <div class="user-box text-center">
             <img src="../assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
                 class="rounded-circle avatar-md">
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <p class="text-muted">Admin Head</p>
-        </div>
+        </div> --}}
 
         <!--- Sidemenu -->
         <div id="sidebar-menu">
@@ -52,17 +52,58 @@
                 <li>
                     <a href="{{ route('teacher') }}" data-bs-toggle="collapse">
                         <i data-feather="airplay"></i>
-                        <span> Dashboards </span>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+                @elseif (Auth::user()->user_type == 'student')
+                <li>
+                    <a href="{{ route('student') }}">
+                        <i data-feather="airplay"></i>
+                        <span> Dashboard </span>
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ route('student') }}">
+                    <a href="{{ route('admin') }}" data-bs-toggle="collapse">
                         <i data-feather="airplay"></i>
-                        <span> Dashboards </span>
+                        <span> Dashboard </span>
                     </a>
                 </li>
                 @endif
+                <li>
+                    <a href="{{ url('/') }}"">
+                        <i data-feather="airplay"></i>
+                        <span> Home </span>
+                    </a>
+                </li>
+
+                {{-- @switch(Auth::user()->user_type)
+                    @case('teacher')
+                        <li>
+                            <a href="{{ route('teacher') }}" data-bs-toggle="collapse">
+                                <i data-feather="airplay"></i>
+                                <span> Dashboards </span>
+                            </a>
+                        </li>
+                        @break
+
+                    @case('student')
+                        <li>
+                            <a href="{{ route('student') }}" data-bs-toggle="collapse">
+                                <i data-feather="airplay"></i>
+                                <span> Dashboards </span>
+                            </a>
+                        </li>
+                        @break
+
+                    @default
+                        <li>
+                            <a href="{{ route('admin') }}" data-bs-toggle="collapse">
+                                <i data-feather="airplay"></i>
+                                <span> Dashboards </span>
+                            </a>
+                        </li>
+                @endswitch --}}
 
                 <li>
                     <a href="#sidebarEcommerce" data-bs-toggle="collapse">
@@ -75,32 +116,32 @@
                             <li>
                                 <a href="{{ route('course.index') }}">View Course</a>
                             </li>
-                            @if (Auth::user()->user_type == 'teacher')
+                            @if (Auth::user()->user_type == 'admin')
                             <li>
                                 <a href="{{ route('course.create') }}">Add Course</a>
                             </li>
                             @endif
                             <li>
-                                <a href="{{ route('course.assign') }}">Course Assign Teacher</a>
+                                <a href="{{ route('course.assign') }}">Course Teacher Assign </a>
                             </li>
-                            @if (Auth::user()->user_type == 'teacher')
+                            @if (Auth::user()->user_type == 'admin')
                             <li>
-                                <a href="{{ route('course.assign-teacher') }}">Add Course Assign</a>
+                                <a href="{{ route('course.assign-teacher') }}">Add Course Teacher Assign</a>
                             </li>
                             @endif
-                            @if (auth()->user()->user_type == 'student')
+                            @if (auth()->user()->user_type == 'student' || Auth::user()->user_type == 'admin')
                             <li>
-                                <a href="{{ route('course.assign-index') }}">Course Assign View</a>
+                                <a href="{{ route('course.assign-index') }}">Course Enroll View</a>
                             </li>
                             <li>
-                                <a href="{{ route('course.assign-student') }}">Course Assign Add</a>
+                                <a href="{{ route('course.assign-student') }}">Course Enroll Add</a>
                             </li>
                             @endif
                         </ul>
                     </div>
                 </li>
 
-                @if (Auth::user()->user_type == 'teacher')
+                @if (Auth::user()->user_type == 'teacher' || Auth::user()->user_type == 'admin')
                     <li>
                         <a href="#sidebarCrm" data-bs-toggle="collapse">
                             <i data-feather="users"></i>
