@@ -84,8 +84,12 @@ CREATE TABLE `course_teachers` (
 --
 
 INSERT INTO `course_teachers` (`id`, `course_id`, `teacher_id`, `created_at`, `updated_at`) VALUES
+<<<<<<< HEAD
 (6, 2, 4, '2021-10-15 15:10:05', '2021-10-15 15:10:05'),
 (7, 1, 11, '2021-11-03 07:19:30', '2021-11-03 07:19:30');
+=======
+(6, 2, 4, '2021-10-15 15:10:05', '2021-10-15 15:10:05');
+>>>>>>> f8392a29d9fbd8eab5df6e23a47ee249ab27282b
 
 -- --------------------------------------------------------
 
@@ -276,7 +280,11 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ph
 (8, 'david', 's@gmail.com', NULL, '$2y$10$iG9xLCXoLxfTCxe86gF95uStBFJMukqIlWT6UMa6h538T4w9t/qQu', '012653655743', 'Male', NULL, NULL, '2021-10-17 01:13:15', '2021-10-17 01:13:15'),
 (9, 'david', 'davida@gmail.com', NULL, '$2y$10$ZgJc69awlhwJ7M9t3u3HDudRU8IbqDF46thOzl5kad4PIu4blNpUu', '012653655743', 'Male', NULL, NULL, '2021-10-17 01:30:50', '2021-10-17 01:30:50'),
 (10, 'ee', 'ee@dmail.com', NULL, '$2y$10$zGsTX.rjaz1Qknwzr8mwSu/rduZsoISt6wsyXk1H97Yuk4.pQDfXm', '121121', 'male', 'student', NULL, '2021-10-17 01:37:54', '2021-10-17 01:37:54'),
+<<<<<<< HEAD
 (11, 'saiful', 'saiful@gmail.com', NULL, '$2y$10$Xk/mGFi4a/VpjTCMCHbSwOb5qLRNkqnc1KlYCi68Tn1dT6e2ynz7q', '2242', 'male', 'teacher', '2R5WaUDwDeA1udMgGsANzfBkP7kGdYfYWcFHAeHkEjGfJb0YIdnpe7pY5UJy', '2021-10-17 02:09:40', '2021-10-17 02:09:40');
+=======
+(11, 'saiful', 'saiful@gmail.com', NULL, '$2y$10$Xk/mGFi4a/VpjTCMCHbSwOb5qLRNkqnc1KlYCi68Tn1dT6e2ynz7q', '2242', 'male', 'teacher', 'NlFnJEfyUmOo6MI0LjiBsmvseOXxlIiZiOWkH4uU8lPYDzWCmTSnW8x8Aq0p', '2021-10-17 02:09:40', '2021-10-17 02:09:40');
+>>>>>>> f8392a29d9fbd8eab5df6e23a47ee249ab27282b
 
 --
 -- Indexes for dumped tables
@@ -372,7 +380,11 @@ ALTER TABLE `course_students`
 -- AUTO_INCREMENT for table `course_teachers`
 --
 ALTER TABLE `course_teachers`
+<<<<<<< HEAD
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+=======
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+>>>>>>> f8392a29d9fbd8eab5df6e23a47ee249ab27282b
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
