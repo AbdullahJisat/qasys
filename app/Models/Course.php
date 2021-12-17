@@ -20,4 +20,14 @@ class Course extends Model
     {
         return $this->belongsTo(User::class, 'student_id', 'id');
     }
+
+    // public function department()
+    // {
+    //     return $this->belongsTo(Department::class, 'department_id', 'id');
+    // }
+
+    public function departmnet()
+    {
+        return $this->hasOne(Department::class, 'id', 'department_id');
+    }
 }

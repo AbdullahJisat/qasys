@@ -59,4 +59,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Course::class, 'course_students', 'student_id', 'course_id');
     }
+
+    public function departments()
+    {
+        return $this->belongsToMany(Department::class, 'department_teachers', 'teacher_id', 'department_id');
+    }
+
+    public function departmentsStudent()
+    {
+        return $this->belongsToMany(Department::class, 'department_students', 'student_id', 'department_id');
+    }
 }

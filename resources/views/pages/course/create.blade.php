@@ -21,6 +21,16 @@
 
                     @csrf
                     <div class="mb-3">
+                        <label for="fullname" class="form-label">Department</label>
+                        <select name="department_id" id="" class="form-control">
+                            <option value="-1">Select Department</option>
+                            @foreach ($departments as $key => $department)
+                            <option value="{{ $key }}">{{ $department }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="fullname" class="form-label">Name</label>
                         <input type="text" class="form-control" name="name" id="name" required="">
                     </div>

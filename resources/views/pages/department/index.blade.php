@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Course')
+@section('title','Department')
 @section('content')
 <div class="row">
     <div class="col-sm-12">
@@ -10,7 +10,7 @@
                 Example of custom toolbar.
             </p>
             @if (Auth::user()->user_type == 'admin')
-            <a type="button" href="{{route('course.create')}}" class="btn btn-success">Add Course</a>
+            <a type="button" href="{{route('department.create')}}" class="btn btn-success">Add Department</a>
             @endif
             <table id="demo-custom-toolbar" data-toggle="table" data-toolbar="#demo-delete-row" data-search="true"
                 data-show-columns="true" data-sort-name="id" data-page-list="[5, 10, 20]"
@@ -22,28 +22,24 @@
                         <th>#</th>
                         <th data-field="name" data-sortable="true">Name</th>
                         <th data-field="date" data-sortable="true" data-formatter="dateFormatter">Code</th>
-                        <th>Department</th>
-                        <th>Department</th>
                         <th>Action</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @forelse ($courses as $course)
+                    @forelse ($departments as $department)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{$course->name}}</td>
-                            <td>{{$course->code}}</td>
-                            {{-- <td>{{$course->department->name}}</td> --}}
-                            <td>{{$course->departmnet->name}}</td>
+                            <td>{{$department->name}}</td>
+                            <td>{{$department->code}}</td>
                             <td>
-                                <a href="{{route('course.edit',$course->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="{{route('course.delete',$course->id)}}" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="{{route('department.edit',$department->id)}}" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="{{route('department.delete',$department->id)}}" class="btn btn-sm btn-danger">Delete</a>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td>No Course Found</td>
+                            <td>No Department Found</td>
                         </tr>
                     @endforelse
 

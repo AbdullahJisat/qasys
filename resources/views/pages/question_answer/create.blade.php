@@ -55,7 +55,7 @@
 
                     <div class="mb-3">
                         <label for="fullname" class="form-label">File Ans</label>
-                        <input type="file" class="form-control" name="is_ans" id="" required="">
+                        <input type="file" class="form-control" name="is_ans" id="" >
                     </div>
 
                     <div class="mb-3">

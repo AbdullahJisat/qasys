@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\CourseStudent;
 use App\Models\CourseTeacher;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Models\File;
 use App\Models\User;
@@ -14,7 +15,8 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::all();
+        // $courses = Course::with('department')->get();
+        $courses = Course::with('departmnet')->get();
         return view('pages.course.index', compact('courses'));
     }
 
@@ -25,7 +27,9 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('pages.course.create');
+        $departments = Department::pluck('name', 'id');
+        // dd($departments);
+        return view('pages.course.create', compact('departments'));
     }
 
     /**
@@ -40,7 +44,7 @@ class CourseController extends Controller
             'name' => 'required',
         ]);
 
-        Course::create(['name' => $request->name, 'code' => $request->code]);
+        Course::create(['name' => $request->name, 'code' => $request->code, 'department_id' => $request->department_id]);
 
         return redirect()->route('course.index')
                         ->with('success','Course created successfully.');
@@ -175,9 +179,4 @@ class CourseController extends Controller
         }
         return back()->with('success','Student created successfully.');
     }
-
-
-
-
-
 }

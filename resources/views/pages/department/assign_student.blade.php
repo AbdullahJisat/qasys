@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Course')
+@section('title','department')
 @section('content')
 <div class="row">
     <div class="col-sm-12">
@@ -9,9 +9,7 @@
             <p class="sub-header">
                 Example of custom toolbar.
             </p>
-            @if (Auth::user()->user_type == 'admin')
-            <a type="button" href="{{route('course.create')}}" class="btn btn-success">Add Course</a>
-            @endif
+            <a type="button" href="{{route('department.assign-student')}}" class="btn btn-success">Add department</a>
             <table id="demo-custom-toolbar" data-toggle="table" data-toolbar="#demo-delete-row" data-search="true"
                 data-show-columns="true" data-sort-name="id" data-page-list="[5, 10, 20]"
                 data-page-size="5" data-pagination="true" class="table-borderless">
@@ -21,29 +19,25 @@
                         {{-- <th data-field="id" data-sortable="true" data-formatter="invoiceFormatter">Order ID</th> --}}
                         <th>#</th>
                         <th data-field="name" data-sortable="true">Name</th>
-                        <th data-field="date" data-sortable="true" data-formatter="dateFormatter">Code</th>
-                        <th>Department</th>
-                        <th>Department</th>
+                        <th data-field="date" data-sortable="true" data-formatter="dateFormatter">department</th>
                         <th>Action</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @forelse ($courses as $course)
+                    @forelse ($assign_student as $student)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{$course->name}}</td>
-                            <td>{{$course->code}}</td>
-                            {{-- <td>{{$course->department->name}}</td> --}}
-                            <td>{{$course->departmnet->name}}</td>
+                            <td>{{$student->name ?? ''}}</td>
+                            <td>{{ $student->departmentsStudent[0]->name ?? '' }}</td>
                             <td>
-                                <a href="{{route('course.edit',$course->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="{{route('course.delete',$course->id)}}" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="{{route('department.assign-student.edit',$student->id)}}" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="{{route('department.assign-student.delete',$student->id)}}" class="btn btn-sm btn-danger">Delete</a>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td>No Course Found</td>
+                            <td>No department Found</td>
                         </tr>
                     @endforelse
 

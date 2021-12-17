@@ -44,13 +44,18 @@ class QuestionAnswerController extends Controller
             'name' => 'required',
         ]);
 
-        if($request->hasFile('file') && $request->hasFile('is_ans')) {
+        if($request->hasFile('file')) {
             $filename = $request->name.'.'.$request->file->getClientOriginalExtension();
-            $fileans = $request->name.'.'.$request->is_ans->getClientOriginalExtension();
             $file_path = str_ireplace("public/","/storage/", $request->file->storeAs('public/question',$filename));
-            $ans_path = str_ireplace("public/","/storage/", $request->file->storeAs('public/answer',$fileans));
         }else{
             return back()->with('success','File not found');
+        }
+
+        if($request->hasFile('is_ans')) {
+            $fileans = $request->name.'.'.$request->is_ans->getClientOriginalExtension();
+            $ans_path = str_ireplace("public/","/storage/", $request->file->storeAs('public/answer',$fileans));
+        }else{
+            $ans_path = '';
         }
 
         $questionAnswer = QuestionAnswer::create(['name' => $request->name,

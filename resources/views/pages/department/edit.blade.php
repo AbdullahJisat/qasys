@@ -16,18 +16,18 @@
                     <p class="mb-0">Everything seems to be ok :)</p>
                 </div> --}}
 
-                {{-- <form id="demo-form" data-parsley-validate="" enctype="multipart/form-data" action="{{route('course.store')}}" method="post"> --}}
-                    <form action="{{route('course.update',$course->id)}}" method="post" enctype="multipart/form-data">
+                {{-- <form id="demo-form" data-parsley-validate="" enctype="multipart/form-data" action="{{route('department.store')}}" method="post"> --}}
+                    <form action="{{route('department.update',$department->id)}}" method="post" enctype="multipart/form-data">
 
                     @csrf
-                    
+
                     <div class="mb-3">
                         <label for="fullname" class="form-label">Name</label>
-                        <input type="text" class="form-control" name="name" value="{{$course->name}}" id="name" required="">
+                        <input type="text" class="form-control" name="name" value="{{$department->name}}" id="name" required="">
                     </div>
                     <div class="mb-3">
                         <label for="fullname" class="form-label">Code</label>
-                        <input type="text" class="form-control" name="code" id="code" value="{{$course->code}}" required="">
+                        <input type="text" class="form-control" name="code" id="code" value="{{$department->code}}" required="">
                     </div>
                     <div>
                         <input type="submit" class="btn btn-success" value="Save">

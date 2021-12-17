@@ -141,6 +141,42 @@
                     </div>
                 </li>
 
+                <li>
+                    <a href="#sidebarDepartment" data-bs-toggle="collapse">
+                        <i data-feather="shopping-cart"></i>
+                        <span> Department </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarDepartment">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('department.index') }}">View Department</a>
+                            </li>
+                            @if (Auth::user()->user_type == 'admin')
+                            <li>
+                                <a href="{{ route('department.create') }}">Add Department</a>
+                            </li>
+                            @endif
+                            <li>
+                                <a href="{{ route('department.assign') }}">Department Teacher Assign </a>
+                            </li>
+                            @if (Auth::user()->user_type == 'admin')
+                            <li>
+                                <a href="{{ route('department.assign-teacher') }}">Add Department Teacher Assign</a>
+                            </li>
+                            @endif
+                            @if (auth()->user()->user_type == 'student' || Auth::user()->user_type == 'admin')
+                            <li>
+                                <a href="{{ route('department.assign-index') }}">Department Enroll View</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('department.assign-student') }}">Department Enroll Add</a>
+                            </li>
+                            @endif
+                        </ul>
+                    </div>
+                </li>
+
                 @if (Auth::user()->user_type == 'teacher' || Auth::user()->user_type == 'admin')
                     <li>
                         <a href="#sidebarCrm" data-bs-toggle="collapse">
