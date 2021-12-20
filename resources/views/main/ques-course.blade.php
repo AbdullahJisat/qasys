@@ -134,7 +134,7 @@
                         <a href="{{ url('/buy-ques') }}" class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></a>
                     </div>
                     </div>
-                    <p><a href="{{ $ques->files[0]->file_url }}" target="_blank">{{ $ques->name }} </a><br><b>&#2547; 199</b></p>
+                    <p><a href="{{ $ques->files[0]->file_url ?? ''}}" target="_blank">{{ $ques->name }} </a><br><b>&#2547; 199</b></p>
                 </div>
                 </div>
             @endforeach

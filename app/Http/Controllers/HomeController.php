@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Department;
+use App\Models\QuestionAnswer;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,18 +25,31 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
     public function student()
     {
-        return view('student');
+        $datas = HomeController::allCourse();
+        return view('student', compact('datas'));
     }
 
     public function teacher()
     {
-        return view('teacher');
+        $datas = HomeController::allCourse();
+        return view('teacher', compact('datas'));
     }
 
     public function admin()
     {
-        return view('admin');
+        $datas = HomeController::allCourse();
+        return view('admin', compact('datas'));
+    }
+
+    public function allCourse(){
+        $data['courses'] = Course::count();
+        $data['department'] = Department::count();
+        $data['teacher'] = User::where('user_type', 'teacher')->count();
+        $data['ques'] = QuestionAnswer::count();
+        return $data;
     }
 }

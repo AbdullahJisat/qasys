@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 08, 2021 at 12:15 PM
+-- Generation Time: Dec 20, 2021 at 12:35 PM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -32,16 +32,18 @@ CREATE TABLE `courses` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `department_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`id`, `name`, `code`, `created_at`, `updated_at`) VALUES
-(1, 'Case', 'cse080', '2021-10-15 13:05:07', '2021-10-15 13:06:39'),
-(2, 'sdfsd', 'fdf', '2021-10-15 14:55:16', '2021-10-15 14:55:16');
+INSERT INTO `courses` (`id`, `name`, `code`, `created_at`, `updated_at`, `department_id`) VALUES
+(1, 'Case', 'cse080', '2021-10-15 13:05:07', '2021-10-15 13:06:39', 1),
+(2, 'sdfsd', 'fdf', '2021-10-15 14:55:16', '2021-10-15 14:55:16', 2),
+(3, 'vdo', '25', '2021-12-15 06:06:11', '2021-12-15 06:06:11', 1);
 
 -- --------------------------------------------------------
 
@@ -84,12 +86,87 @@ CREATE TABLE `course_teachers` (
 --
 
 INSERT INTO `course_teachers` (`id`, `course_id`, `teacher_id`, `created_at`, `updated_at`) VALUES
-<<<<<<< HEAD
 (6, 2, 4, '2021-10-15 15:10:05', '2021-10-15 15:10:05'),
 (7, 1, 11, '2021-11-03 07:19:30', '2021-11-03 07:19:30');
-=======
-(6, 2, 4, '2021-10-15 15:10:05', '2021-10-15 15:10:05');
->>>>>>> f8392a29d9fbd8eab5df6e23a47ee249ab27282b
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departments`
+--
+
+CREATE TABLE `departments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`id`, `name`, `code`, `created_at`, `updated_at`) VALUES
+(1, 'Computer Science & Engineering', 'cse', '2021-12-15 05:29:34', '2021-12-15 05:29:34'),
+(2, 'Electrical Engineering', 'eee', '2021-12-15 05:29:34', '2021-12-15 05:29:34'),
+(3, 'Marketing & HR', 'mhr', '2021-12-15 05:29:34', '2021-12-17 07:56:27'),
+(4, 'Economics', 'eco', '2021-12-15 05:29:34', '2021-12-15 05:29:34'),
+(5, 'Machine Learning', 'ml', '2021-12-15 05:29:34', '2021-12-15 05:29:34'),
+(6, 'Data Science', 'ds', '2021-12-15 05:29:34', '2021-12-15 05:29:34'),
+(7, 'Mathematics', 'mat', '2021-12-15 05:29:34', '2021-12-15 05:29:34'),
+(8, 'Biology', 'bio', '2021-12-15 05:29:34', '2021-12-15 05:29:34'),
+(9, 'Astrophysics', 'as', '2021-12-15 05:29:34', '2021-12-15 05:29:34'),
+(10, 'Climate Change', 'cl', '2021-12-15 05:29:34', '2021-12-15 05:29:34'),
+(11, 'Physics', 'phy', '2021-12-15 05:29:34', '2021-12-15 05:29:34'),
+(12, 'Social Science', 'ss', '2021-12-15 05:29:34', '2021-12-15 05:29:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `department_students`
+--
+
+CREATE TABLE `department_students` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `department_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `department_students`
+--
+
+INSERT INTO `department_students` (`id`, `department_id`, `student_id`, `created_at`, `updated_at`) VALUES
+(2, 2, 10, '2021-12-17 08:55:33', '2021-12-17 08:55:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `department_teachers`
+--
+
+CREATE TABLE `department_teachers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `department_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `department_teachers`
+--
+
+INSERT INTO `department_teachers` (`id`, `department_id`, `teacher_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 4, '2021-12-17 08:18:49', '2021-12-17 08:18:49'),
+(2, 3, 4, '2021-12-17 08:18:49', '2021-12-17 08:18:49'),
+(3, 1, 11, '2021-12-17 08:59:49', '2021-12-17 08:59:49'),
+(4, 3, 11, '2021-12-17 08:59:49', '2021-12-17 08:59:49'),
+(5, 5, 11, '2021-12-17 08:59:49', '2021-12-17 08:59:49'),
+(6, 6, 11, '2021-12-17 08:59:49', '2021-12-17 08:59:49');
 
 -- --------------------------------------------------------
 
@@ -131,9 +208,8 @@ INSERT INTO `files` (`id`, `type`, `file_url`, `qa_id`, `is_ans`, `created_at`, 
 (1, 'pdf', '/storage/question_answer/fsfsdfds.pdf', 1, '1', '2021-09-22 01:10:29', '2021-09-22 01:10:29'),
 (2, 'pdf', '/storage/question_answer/fsfsdfds.pdf', 2, '2', '2021-09-22 01:10:58', '2021-09-22 01:10:59'),
 (3, 'pdf', '/storage/question_answer/fsfsdfds.pdf', 3, '3', '2021-09-22 01:51:49', '2021-09-22 01:51:49'),
-(4, 'xls', '/storage/question_answer/asdsadsadadelete.xls', 3, '4', '2021-09-22 02:03:41', '2021-09-22 02:03:41'),
-(5, 'xlsx', '/storage/question_answer/afsaf.xlsx', 4, '5', '2021-09-23 00:08:29', '2021-09-23 00:08:29'),
-(6, 'jpg', '/storage/question/Akbar.jpg', 4, '/storage/answer/Akbar.jpg', '2021-10-16 01:37:29', '2021-10-16 01:37:29');
+(6, 'jpg', '/storage/question/Akbar.jpg', 4, '/storage/answer/Akbar.jpg', '2021-10-16 01:37:29', '2021-10-16 01:37:29'),
+(7, 'pdf', '/storage/question/david.pdf', 5, '', '2021-12-17 09:10:31', '2021-12-17 09:10:31');
 
 -- --------------------------------------------------------
 
@@ -163,7 +239,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2021_09_22_084742_create_send_links_table', 5),
 (10, '2021_10_15_183708_create_courses_table', 6),
 (11, '2021_10_15_191627_create_course_teachers_table', 7),
-(12, '2021_10_15_191746_create_course_students_table', 7);
+(12, '2021_10_15_191746_create_course_students_table', 7),
+(13, '2021_12_15_110242_create_departments_table', 8),
+(14, '2021_12_17_140258_create_department_teachers_table', 9),
+(15, '2021_12_17_142730_create_department_students_table', 10);
 
 -- --------------------------------------------------------
 
@@ -219,7 +298,8 @@ CREATE TABLE `question_answers` (
 INSERT INTO `question_answers` (`id`, `name`, `description`, `type`, `teacher_id`, `course_id`, `created_at`, `updated_at`) VALUES
 (1, 'fsfsdfds', 'sdfsfsfsf', 1, 4, 1, '2021-09-22 01:10:28', '2021-09-22 01:10:28'),
 (3, 'asdsadsadadelete', 'dsadsada', 1, 4, 2, '2021-09-22 01:51:49', '2021-09-22 02:03:41'),
-(4, 'Akbar', 'sfsdkfdskfsdf', 0, 4, 1, '2021-10-16 01:37:29', '2021-10-16 01:37:29');
+(4, 'Akbar', 'sfsdkfdskfsdf', 0, 4, 1, '2021-10-16 01:37:29', '2021-10-16 01:37:29'),
+(5, 'david', NULL, 0, 4, 3, '2021-12-17 09:10:31', '2021-12-17 09:10:31');
 
 -- --------------------------------------------------------
 
@@ -280,11 +360,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ph
 (8, 'david', 's@gmail.com', NULL, '$2y$10$iG9xLCXoLxfTCxe86gF95uStBFJMukqIlWT6UMa6h538T4w9t/qQu', '012653655743', 'Male', NULL, NULL, '2021-10-17 01:13:15', '2021-10-17 01:13:15'),
 (9, 'david', 'davida@gmail.com', NULL, '$2y$10$ZgJc69awlhwJ7M9t3u3HDudRU8IbqDF46thOzl5kad4PIu4blNpUu', '012653655743', 'Male', NULL, NULL, '2021-10-17 01:30:50', '2021-10-17 01:30:50'),
 (10, 'ee', 'ee@dmail.com', NULL, '$2y$10$zGsTX.rjaz1Qknwzr8mwSu/rduZsoISt6wsyXk1H97Yuk4.pQDfXm', '121121', 'male', 'student', NULL, '2021-10-17 01:37:54', '2021-10-17 01:37:54'),
-<<<<<<< HEAD
-(11, 'saiful', 'saiful@gmail.com', NULL, '$2y$10$Xk/mGFi4a/VpjTCMCHbSwOb5qLRNkqnc1KlYCi68Tn1dT6e2ynz7q', '2242', 'male', 'teacher', '2R5WaUDwDeA1udMgGsANzfBkP7kGdYfYWcFHAeHkEjGfJb0YIdnpe7pY5UJy', '2021-10-17 02:09:40', '2021-10-17 02:09:40');
-=======
-(11, 'saiful', 'saiful@gmail.com', NULL, '$2y$10$Xk/mGFi4a/VpjTCMCHbSwOb5qLRNkqnc1KlYCi68Tn1dT6e2ynz7q', '2242', 'male', 'teacher', 'NlFnJEfyUmOo6MI0LjiBsmvseOXxlIiZiOWkH4uU8lPYDzWCmTSnW8x8Aq0p', '2021-10-17 02:09:40', '2021-10-17 02:09:40');
->>>>>>> f8392a29d9fbd8eab5df6e23a47ee249ab27282b
+(11, 'saiful', 'saiful@gmail.com', NULL, '$2y$10$Xk/mGFi4a/VpjTCMCHbSwOb5qLRNkqnc1KlYCi68Tn1dT6e2ynz7q', '2242', 'male', 'teacher', 'hZNTkt5ZngjIJ8QGQI8y8d7H89NjPSd2WAWjhse1lQnpHOUxXCdTvNZN9IoJ', '2021-10-17 02:09:40', '2021-10-17 02:09:40');
 
 --
 -- Indexes for dumped tables
@@ -306,6 +382,24 @@ ALTER TABLE `course_students`
 -- Indexes for table `course_teachers`
 --
 ALTER TABLE `course_teachers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `department_students`
+--
+ALTER TABLE `department_students`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `department_teachers`
+--
+ALTER TABLE `department_teachers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -368,7 +462,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `course_students`
@@ -380,11 +474,25 @@ ALTER TABLE `course_students`
 -- AUTO_INCREMENT for table `course_teachers`
 --
 ALTER TABLE `course_teachers`
-<<<<<<< HEAD
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-=======
+
+--
+-- AUTO_INCREMENT for table `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `department_students`
+--
+ALTER TABLE `department_students`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `department_teachers`
+--
+ALTER TABLE `department_teachers`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
->>>>>>> f8392a29d9fbd8eab5df6e23a47ee249ab27282b
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -396,13 +504,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -414,7 +522,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `question_answers`
 --
 ALTER TABLE `question_answers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `send_links`

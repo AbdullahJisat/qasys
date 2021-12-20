@@ -6,6 +6,7 @@ use App\Http\Controllers\SendLinkController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,6 +48,13 @@ Route::get('/', function () {
 Route::get('/ques-by-course/{id}', function ($id) {
     $courses = App\Models\Course::all();
     $quesAns = App\Models\QuestionAnswer::with('course')->where('course_id',$id)->get();
+    return view('main.ques-course', ['courses'=>$courses,'quesAns'=>$quesAns]);
+});
+
+Route::get('/ques-by-department/{id}', function ($id) {
+    // $quesAns = Department::find($id)->courseQues;
+    $courses = App\Models\Course::all();
+    $quesAns = App\Models\QuestionAnswer::with('course.departmnet')->where('course_id',$id)->get();
     return view('main.ques-course', ['courses'=>$courses,'quesAns'=>$quesAns]);
 });
 
