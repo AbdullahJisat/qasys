@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Student;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -45,6 +47,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function allStudent()
+    {
+        return $this->belongsTo(Student::class, 'student_id', 'id');
+    }
+
+
+    /**
+     * Get the stu associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function stu()
+    {
+        return $this->hasOne(Student::class, 'student_id', 'id');
+    }
 
     // public function course()
     // {
